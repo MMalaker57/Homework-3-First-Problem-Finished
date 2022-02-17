@@ -77,7 +77,7 @@ class CalculatePlotData: ObservableObject {
     }
     
     
-    func ploteToTheMinusX() async
+    func ploteToTheMinusX(dataToPlot: [(numberOfGuesses: UInt64, integralError: Double)]) async
     {
         
         //set the Plot Parameters
@@ -89,21 +89,23 @@ class CalculatePlotData: ObservableObject {
         theText = "y = exp(-x)\n"
         
         var plotData :[plotDataType] =  []
-        for i in 0 ..< 60 {
+        for i in dataToPlot {
 
             //create x values here
 
-            let x = -2.0 + Double(i) * 0.2
+            let x = log10(abs(Double(i.numberOfGuesses)))
+            //create y values here
+            let y = log10(abs(i.integralError))
+            print(x, y)
 
-        //create y values here
 
-        let y = exp(-x)
+
             
             let dataPoint: plotDataType = [.X: x, .Y: y]
             plotData.append(contentsOf: [dataPoint])
             theText += "x = \(x), y = \(y)\n"
-        }
         
+        }
         await appendDataToPlot(plotData: plotData)
         await updateCalculatedTextOnMainThread(theText: theText)
         
