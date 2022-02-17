@@ -42,7 +42,7 @@ class MonteCarloExp: NSObject, ObservableObject {
         
 //        integral = Double(pointsUnderCurve/numberOfGuesses)*box.cuboidVolume(numberOfSides: 2, sideOneDimension: upperBound-lowerBound, sideTwoDimension: exp(-1.0*lowerBound), sideThreeDimension: 0.0)
         
-        integral = Double(pointsUnderCurve)/Double(numberOfGuesses)//*box.cuboidVolume(numberOfSides: 2, sideOneDimension: 1.0, sideTwoDimension: 1.0, sideThreeDimension: 0.0)
+        integral = Double(pointsUnderCurve)/Double(numberOfGuesses)*box.cuboidVolume(numberOfSides: 2, sideOneDimension: 1.0, sideTwoDimension: 1.0, sideThreeDimension: 0.0)
 //        print(integral)
         return (integral,newPointsBelow, newPointsAbove)
         

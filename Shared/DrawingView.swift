@@ -57,7 +57,7 @@ struct drawIntegral: Shape {
                
         // draw from the center of our rectangle
         let center = CGPoint(x: rect.width / 2, y: rect.height / 2)
-        let scale = rect.width/2
+        let scale = rect.width
         
 
         // Create the Path for the display
@@ -66,7 +66,7 @@ struct drawIntegral: Shape {
         
         for item in drawingPoints {
             
-            path.addRect(CGRect(x: item.xPoint*Double(scale)+Double(center.x), y: -1.0*item.yPoint*Double(scale)+Double(center.y), width: 1.0 , height: 1.0))
+            path.addRect(CGRect(x: item.xPoint*Double(scale), y: -1.0*item.yPoint*Double(scale)+Double(rect.height), width: 1.0 , height: 1.0))
             
         }
 
